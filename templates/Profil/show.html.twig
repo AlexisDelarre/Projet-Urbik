@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+    {{ user.name }}
+    {{ user.lastName }}
+    {{ user.email }}
+    {{ user.metier }}
+    {{ user.sexe }}
+    {{ user.country }}
+
+    <li><a href="{{ path('profil_edit') }}">Modifier</a></li>
+{% endblock body %}

@@ -1,0 +1,15 @@
+<div id ="menu" class="menu">
+    <ul>
+
+        <li> <a href="{{ path('homepage') }}"> Accueil </a></li>
+        {% if app.user %}
+            <li><a href="{{ path('logout') }}">Logout</a></li>
+            <a href="{{ path('profil_show')}}">Profil</a>
+        {% else %}
+            <li><a href="{{ path('login') }}">Login</a></li>
+            <li><a href="{{ path('register') }}">Register</a></li>
+        {% endif %}
+    </ul>
+</div>
+
+
