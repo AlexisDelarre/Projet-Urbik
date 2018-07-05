@@ -23,4 +23,17 @@ class UserRepository extends ServiceEntityRepository implements UserLoaderInterf
             ->getOneOrNullResult();
     }
 
+    public function findOrder()
+    {
+
+        return $this->createQueryBuilder('c')->orderBy('c.country', 'ASC')->getQuery()->getResult();
+
+    }
+
+    public function findCountry()
+    {
+        return $this->createQueryBuilder('c')->select('c.country')->distinct()->orderBy('c.country', 'ASC')->getQuery()->getResult();
+    }
+
+
 }

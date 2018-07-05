@@ -24,9 +24,11 @@ class AdminController extends Controller
     public function userManagement()
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository(User::class)->findAll();
+        $user = $em->getRepository(User::class)->findOrder();
 
-        return $this->render('Admin\listing.html.twig',['user'=>$user]);
+        $pays= $em->getRepository(User::class)->findCountry();
+
+        return $this->render('Admin\listing.html.twig', ['pays'=>$pays, 'user'=>$user]);
     }
 
 
@@ -34,7 +36,7 @@ class AdminController extends Controller
      * @Route(path="admin/edit/{id}", name="admin_edit")
      *
      */
-    public function editConference(Request $request, User $user)
+    public function UserEdit(Request $request, User $user)
     {
 
         $form = $this->createForm(UserType::class, $user);
@@ -44,7 +46,7 @@ class AdminController extends Controller
         if($form->isSubmitted() && $form->isValid()){
 
             $event = $this->get(UserEvent::class);
-            $event->setUser($user)->getName();
+            $event->setUser($user);
             $dispatcher = $this->get("event_dispatcher");
             $dispatcher->dispatch(AppEvent::USER_EDIT, $event);
 
@@ -52,5 +54,21 @@ class AdminController extends Controller
         }
 
         return $this->render("Admin/edit.html.twig", ["form" => $form->createView()]);
+    }
+
+
+    /**
+     * @Route(path="admin/delete/{id}", name="admin_delete")
+     *
+     */
+    public function UserDelete(User $user)
+    {
+
+        $event = $this->get(UserEvent::class);
+        $event->setUser($user);
+        $dispatcher = $this->get("event_dispatcher");
+        $dispatcher->dispatch(AppEvent::USER_DELETE, $event);
+
+        return $this->redirectToRoute("admin_listing");
     }
 }

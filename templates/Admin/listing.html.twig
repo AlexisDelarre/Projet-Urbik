@@ -2,18 +2,37 @@
 
 {% block body %}
 
+
+    {% for pays in pays %}
     {% for users in user %}
 
-        {{ users.name }}
-        {{ users.lastName }}
-        {{ users.email }}
-        {{ users.metier }}
-        {{ users.sexe }}
-        {{ users.country }}
 
+
+
+
+            {% if users.country == pays.country %}
+
+                {{ users.name }}
+                {{ users.lastName }}
+                {{ users.email }}
+                {{ users.metier }}
+                {{ users.sexe }}
+                {{ users.country }}
+                {{ users.depart }}
+                <a href={{ path('admin_edit', {'id':users.id }) }}><button>Edit</button></a>
+                <a href={{ path('admin_delete', {'id': users.id }) }}><button>Delete</button></a>
+                <br>
+
+            {% endif %}
+
+        {% endfor %}
+
+        ---------------------
+        <br>
+        <br>
         <br>
 
-
     {% endfor %}
+
 
 {% endblock %}

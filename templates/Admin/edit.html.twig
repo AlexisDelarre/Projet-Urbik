@@ -1,13 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     {{ form_start(form) }}
-    {{ form_widget(form.name, { 'attr': {
-        'placeholder': 'title',
-
-        'class':"form-control"
-    } }) }}
-    <div class="col-md-12">
-        <button type="submit"><span>Editer</span></button>
-    </div>
+    {{ form_rest(form) }}
     {{ form_end(form) }}
 {% endblock %}
