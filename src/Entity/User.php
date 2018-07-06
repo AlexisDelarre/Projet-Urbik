@@ -60,7 +60,8 @@ class User implements UserInterface, \Serializable {
      */
     private $metier;
     /**
-     * @ORM\Column()
+     * @var \DateTimeInterface
+     * @ORM\Column(type="date")
      */
     private $birthday;
 
@@ -208,7 +209,7 @@ class User implements UserInterface, \Serializable {
     }
 
     /**
-     * @return Date
+     * @return \DateTimeInterface
      */
     public function getBirthday()
     {
@@ -216,12 +217,14 @@ class User implements UserInterface, \Serializable {
     }
 
     /**
-     * @param Date $birthday
+     * @param \DateTimeInterface $birthday
      */
     public function setBirthday($birthday)
     {
         $this->birthday = $birthday;
     }
+
+
 
 
 
@@ -241,7 +244,7 @@ class User implements UserInterface, \Serializable {
         $this->metier="";
         $this->sexe="";
         $this->lastName="";
-        $this->birthday= "";
+
     }
 
 

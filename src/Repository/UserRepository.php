@@ -35,5 +35,11 @@ class UserRepository extends ServiceEntityRepository implements UserLoaderInterf
         return $this->createQueryBuilder('c')->select('c.country')->distinct()->orderBy('c.country', 'ASC')->getQuery()->getResult();
     }
 
+    public function findAdmin()
+    {
+        return $this->createQueryBuilder('c')->select('c.email')->where("c.admin = 1")->getQuery()->getResult();
+
+    }
+
 
 }

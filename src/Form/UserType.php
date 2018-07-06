@@ -34,6 +34,10 @@ class UserType extends AbstractType
             ))
             ->add('name', TextType::class)
             ->add('last_name', TextType::class)
+            ->add('birthday', BirthdayType::class,  array(
+                'widget' => 'single_text',
+
+                'format' => 'yyyy-MM-dd'))
 
             //Ne fonctionne pas car je travaille en local, Devrait marcher si le projet était hébergé.
             /*->add("country",TextType::class, array(

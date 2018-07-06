@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Swift_Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -50,7 +51,8 @@ class SecurityController extends AbstractController {
     /**
      * @Route("/register", name="check_register", methods="POST")
      */
-    public function check_register(Request $request, UserPasswordEncoderInterface $encoder) {
+    public function check_register(Request $request, UserPasswordEncoderInterface $encoder, Swift_Mailer $mailer) {
+
 
         $ip= $this->container->get('request_stack')->getCurrentRequest()->getClientIp();
         $user = new User();
@@ -64,6 +66,22 @@ class SecurityController extends AbstractController {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
+            $message = (new \Swift_Message('Confirmation Inscription'))
+                ->setFrom('exercice123.123@gmail.com')
+                ->setTo($user->getEmail())
+                ->setBody("Vous vous êtes inscris avec les informations suivantes :". $this->renderView(
+
+                        'email/emailuser.html.twig', ["users" => $user]));
+            $mailer->send($message);
+
+            $message = (new \Swift_Message("Nouveau inscrit"))
+                ->setFrom('exercice123.123@gmail.com')
+                ->setTo('exercice123.123@gmail.com')
+                ->setBody("un nouvel inscrit sur le site, ses informations sont les suivantes :". $this->renderView(
+
+                        'email/emailadmin.html.twig', ["users" => $user]));
+            $mailer->send($message);
 
             return $this->redirectToRoute('homepage');
         }
