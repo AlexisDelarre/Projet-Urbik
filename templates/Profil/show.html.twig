@@ -1,14 +1,39 @@
-{% extends 'base.html.twig' %}
-
-
+{% extends 'base2.html.twig' %}
 
 {% block body %}
-    {{ user.name }}
-    {{ user.lastName }}
-    {{ user.email }}
-    {{ user.metier }}
-    {{ user.sexe }}
-    {{ user.country }}
+    <section id="contact">
+        <div class="container wow fadeInUp">
+            <div class="section-header">
+                <h2 class="section-title">{{ user.lastName }} {{ user.name }}</h2>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-8">
+            <div class="form">
+                        <div class="container wow fadeInUp">
+                            <div class="section-header"></div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="member">
+                                        <span>{{ user.email }}</span>
+                                        <span>{{ user.sexe }} </span><br>
+                                        <span>{{ user.birthday|date ('d-M-y') }}</span><br>
+                                        <span>{{ user.metier }}</span><br>
+                                        <span>{{ user.country }}</span><br>
+                                        <span>{{ user.depart }}</span>
 
-    <li><a href="{{ path('profil_edit') }}">Modifier</a></li>
-{% endblock body %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            <button  href="{{ path('profil_edit') }}"> Editer</button>
+                </form>
+            </div>
+        </div>
+
+        </div>
+        </div>
+    </section><!-- #contact -->
+
+
+{% endblock %}

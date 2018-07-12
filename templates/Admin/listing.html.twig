@@ -1,38 +1,40 @@
-{% extends 'base.html.twig' %}
+{% extends 'base2.html.twig' %}
+
+
+
 
 {% block body %}
 
 
+
     {% for pays in pays %}
-    {% for users in user %}
-
-
-
-
-
+        <section id="team">
+            <div class="container wow fadeInUp">
+                <h1>{{ pays.country }}</h1>
+                <div class="section-header">
+                </div>
+                    <div class="row">
+        {% for users in user %}
             {% if users.country == pays.country %}
-
-                {{ users.name }}
-                {{ users.lastName }}
-                {{ users.email }}
-                {{ users.metier }}
-                {{ users.sexe }}
-                {{ users.country }}
-                {{ users.depart }}
-                <a href={{ path('admin_edit', {'id':users.id }) }}><button>Edit</button></a>
-                <a href={{ path('admin_delete', {'id': users.id }) }}><button>Delete</button></a>
-                <br>
-
+                        <div class="col-lg-3 col-md-6">
+                            <div class="member">
+                                <div class="pic"><img src="{{ asset('img/user.png') }}" alt=""></div>
+                                <h4>{{ users.lastName }} {{ users.name }}</h4>
+                                <span>{{ users.email }}</span>
+                                <span>{{ users.metier }}</span>
+                                <span>{{ users.sexe }} {{ users.birthday|date ('d-M-y') }}</span>
+                                <span>{{ users.country }}</span>
+                                <span>{{ users.depart }}</span>
+                                <a href={{ path('admin_edit', {'id':users.id }) }}><button>Edit</button></a>
+                                <a href={{ path('admin_delete', {'id': users.id }) }}><button>Delete</button></a>
+                            </div>
+                        </div>
             {% endif %}
-
         {% endfor %}
-
-        ---------------------
-        <br>
-        <br>
-        <br>
+                    </div>
+            </div>
 
     {% endfor %}
 
-
+    </section><!-- #team -->
 {% endblock %}

@@ -42,6 +42,8 @@ class UserType extends AbstractType
             //Ne fonctionne pas car je travaille en local, Devrait marcher si le projet était hébergé.
             /*->add("country",TextType::class, array(
                 'data'=> (json_decode(file_get_contents("https://www.iplocate.io/api/lookup/".$ip)))->{'country'} ))*/
+            //->add("depart",TextType::class, array(
+            //    'data'=> (json_decode(file_get_contents("https://www.iplocate.io/api/lookup/".$ip)))->{'subdivision2'} ))
 
             ->add("country",TextType::class, array(
                 'data'=> (json_decode(file_get_contents("https://www.iplocate.io/api/lookup/195.132.131.27")))->{'country'} ))
@@ -61,7 +63,7 @@ class UserType extends AbstractType
 
             )))
 
-            ->add('register', SubmitType::class,['label' => 'Register'])
+            //->add('register', SubmitType::class,['label' => 'Register'])
 
         ;
     }

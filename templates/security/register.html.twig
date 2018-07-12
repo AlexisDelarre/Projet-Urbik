@@ -1,9 +1,89 @@
-{% extends 'base.html.twig' %}
+{% extends 'base2.html.twig' %}
 
 {% block body %}
 
-{{ form_start(form) }}
-    {{ form_rest(form) }}
-    {{ form_end(form) }}
+    {{ form_start(form) }}
+
+
+    <section id="contact">
+        <div class="container wow fadeInUp">
+            <div class="section-header">
+                <h3 class="section-title">Login</h3>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-8">
+            <div class="form">
+                <form action="{{ path('login') }}" method="post" role="form" class="contactForm">
+                    <div class="form-group">
+                        {{ form_widget(form.email, { 'attr': {
+                            'placeholder': 'Email',
+
+                            'class':"form-control"
+                        } }) }}
+                    </div>
+                    <div class="form-group">
+
+                        {{ form_widget(form.plainPassword.first, { 'attr': {
+                            'placeholder': 'Mot de passe',
+                            'class':"form-control"
+                        } }) }}
+                    </div>
+                    <div class="form-group">
+                    {{ form_widget(form.plainPassword.second, { 'attr': {
+                        'placeholder': 'Répéter le mot de passe',
+                        'class':"form-control"
+                    } }) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.name, { 'attr': {
+                            'placeholder': 'Prénom',
+                            'class':"form-control"
+                        } }) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.last_name, { 'attr': {
+                            'placeholder': 'Nom de famille',
+                            'class':"form-control"
+                        } }) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.birthday, { 'attr': {
+                            'class':"form-control"
+
+                        } }) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.country, { 'attr': {
+                            'class':"form-control"
+                        } }) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.depart, { 'attr': {
+                            'placeholder': 'Département',
+                            'class':"form-control"
+                        } }) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.sexe, { 'attr': {
+                            'class':"form-control"
+                        } }) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.metier, { 'attr': {
+                            'class':"form-control"
+                        } }) }}
+                    </div>
+                    <div class="text-center">
+                        <button type="submit">Se connecter</button></div>
+                </form>
+            </div>
+        </div>
+
+        </div>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+        </div>
+    </section><!-- #contact -->
+
 
 {% endblock %}

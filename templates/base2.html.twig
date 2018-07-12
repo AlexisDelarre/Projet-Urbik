@@ -30,9 +30,19 @@
           Author: BootstrapMade.com
           License: https://bootstrapmade.com/license/
         ======================================================= -->
+
     </head>
     <body>
-        {% include "navbar.html.twig" %}
+    {% include "navbar.html.twig" %}
+        <style type="text/css">
+            .nav-menu a {
+                color: black;
+
+            }
+            body  {
+                margin: 100px;
+            }
+        </style>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

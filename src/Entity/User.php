@@ -245,6 +245,7 @@ class User implements UserInterface, \Serializable {
         $this->sexe="";
         $this->lastName="";
 
+
     }
 
 

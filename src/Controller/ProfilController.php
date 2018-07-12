@@ -12,6 +12,7 @@ namespace App\Controller;
 use App\AppEvent;
 use App\Entity\User;
 use App\Event\UserEvent;
+use App\Form\UserEditType;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -21,7 +22,7 @@ class ProfilController extends Controller
 {
 
     /**
-     * @Route(path="/show", name="profil_show")
+     * @Route(path="/user/show", name="profil_show")
      *
      */
     public function showProfil(){
@@ -37,13 +38,13 @@ class ProfilController extends Controller
     }
 
     /**
-     * @Route(path="/show/edit", name="profil_edit")
+     * @Route(path="/user/show/edit", name="profil_edit")
      */
     public function EditProfil(Request $request){
 
         $user=$this->getUser();
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserEditType::class, $user);
 
         $form->handleRequest($request);
 

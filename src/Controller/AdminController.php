@@ -10,6 +10,7 @@ namespace App\Controller;
 
 use App\AppEvent;
 use App\Event\UserEvent;
+use App\Form\UserEditType;
 use App\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use App\Entity\User;
@@ -39,7 +40,7 @@ class AdminController extends Controller
     public function UserEdit(Request $request, User $user)
     {
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserEditType::class, $user);
 
         $form->handleRequest($request);
 
