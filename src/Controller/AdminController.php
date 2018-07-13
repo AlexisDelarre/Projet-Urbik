@@ -10,6 +10,7 @@ namespace App\Controller;
 
 use App\AppEvent;
 use App\Event\UserEvent;
+use App\Form\UserAdminType;
 use App\Form\UserEditType;
 use App\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

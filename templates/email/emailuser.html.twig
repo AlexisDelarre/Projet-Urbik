@@ -3,7 +3,7 @@
 Prénom : {{ users.name }}
 Nom : {{ users.lastName }}
 pays : {{ users.country }}
-Date de naissance : {{ users.birthday }}
+Date de naissance : {{ users.birthday|date ('d-M-y') }}
 Département : {{ users.depart }}
 Sexe : {{ users.sexe }}
 Metier : {{ users.metier }}

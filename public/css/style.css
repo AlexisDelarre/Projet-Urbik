@@ -487,9 +487,9 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 32px;
   color: #111;
   text-transform: uppercase;
-  text-align: left;
+  text-align: center;
   font-weight: 700;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .section-header .section-description {

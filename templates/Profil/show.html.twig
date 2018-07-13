@@ -7,26 +7,31 @@
                 <h2 class="section-title">{{ user.lastName }} {{ user.name }}</h2>
             </div>
         </div>
-        <div class="col-lg-5 col-md-8">
+        <div class="col-lg-12 col-md-12">
             <div class="form">
                         <div class="container wow fadeInUp">
                             <div class="section-header"></div>
                             <div class="row">
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-12 col-md-12">
+                               <div id="team">
                                     <div class="member">
-                                        <span>{{ user.email }}</span>
-                                        <span>{{ user.sexe }} </span><br>
-                                        <span>{{ user.birthday|date ('d-M-y') }}</span><br>
-                                        <span>{{ user.metier }}</span><br>
-                                        <span>{{ user.country }}</span><br>
-                                        <span>{{ user.depart }}</span>
+                                        <span>Votre email: {{ user.email }}</span><br>
+                                        <span>Votre sexe: {{ user.sexe }} </span><br>
+                                        <span>Votre date de naissance: {{ user.birthday|date ('d-M-y') }}</span><br>
+                                        <span>Votre métier: {{ user.metier }}</span><br>
+                                        <span>Votre Pays: {{ user.country }}</span><br>
+                                        <span>Département: {{ user.depart }}</span><br>
 
+                                        <!-- BOUTON -->
+                                        <div class="text-center"><a href={{ path('profil_edit') }}><button type="submit"> Mettre à jour mes infos</button></a></div>
+                                        <!-- FIN BOUTON -->
+                                         </div> <!-- Team -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-            <button  href="{{ path('profil_edit') }}"> Editer</button>
                 </form>
             </div>
         </div>

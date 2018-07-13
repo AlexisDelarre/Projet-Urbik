@@ -22,7 +22,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        //$ip= $this->container->get('request_stack')->getCurrentRequest()->getClientIp();
+        $ip = $_SERVER['REMOTE_ADDR'];
 
 
         $builder
@@ -36,19 +36,12 @@ class UserType extends AbstractType
             ->add('last_name', TextType::class)
             ->add('birthday', BirthdayType::class,  array(
                 'widget' => 'single_text',
-
                 'format' => 'yyyy-MM-dd'))
-
-            //Ne fonctionne pas car je travaille en local, Devrait marcher si le projet était hébergé.
-            /*->add("country",TextType::class, array(
-                'data'=> (json_decode(file_get_contents("https://www.iplocate.io/api/lookup/".$ip)))->{'country'} ))*/
-            //->add("depart",TextType::class, array(
-            //    'data'=> (json_decode(file_get_contents("https://www.iplocate.io/api/lookup/".$ip)))->{'subdivision2'} ))
-
             ->add("country",TextType::class, array(
-                'data'=> (json_decode(file_get_contents("https://www.iplocate.io/api/lookup/195.132.131.27")))->{'country'} ))
+                'data'=> (json_decode(file_get_contents("https://www.iplocate.io/api/lookup/".$ip)))->{'country'} ))
             ->add("depart",TextType::class, array(
-            'data'=> (json_decode(file_get_contents("https://www.iplocate.io/api/lookup/195.132.131.27")))->{'subdivision2'} ))
+                'data'=> (json_decode(file_get_contents("https://www.iplocate.io/api/lookup/".$ip)))->{'subdivision2'} ))
+
             ->add('sexe',ChoiceType::class, array('choices'  => array( "Femme" => "Femme", "Homme " => "Homme",)))
 
             ->add("metier", ChoiceType::class, array('choices' => array(
